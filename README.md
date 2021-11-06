@@ -123,7 +123,7 @@ Loss Figure
 ![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/update_error.png)
 
 >激活函数
-![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/activation_functiona.png)
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/activation_function.png)
 >你看sigmoid 只会输出正数，以及靠近0的输出变化率最大，tanh和sigmoid不同的是，tanh输出可以是负数，ReLu是输入只能大于0,如果你输入含有负数，ReLu就不适合，如果你的输入是图片格式，ReLu就挺常用的。
 >Reference：https://zhuanlan.zhihu.com/p/32824193
 
