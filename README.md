@@ -56,6 +56,8 @@ class MLP(nn.Module):
         return x
 ```    
 
+>Loss Figure
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/loss_figure)
 
 ## License
 
