@@ -336,7 +336,7 @@ A solution to this problem is to **slowly decrease the learning rate value** in 
 **These non-linearities help us solve complex problems.!!**
 >因此，如果我们惩罚复杂性会怎样。我们仍然会使用很多参数，但我们会防止我们的模型变得过于复杂。体重衰减**(weight decay)**的想法就是这样产生的。
 
-#So, How Weight decay works.
+# So, How Weight decay works.
 >惩罚复杂性的一种方法是将我们所有的参数（权重）添加到我们的损失函数中。嗯，这不会奏效，因为有些参数是正的，有些是负的。那么如果我们将所有参数的平方加到我们的损失函数中会怎样。我们可以这样做，但是它可能会导致我们的损失变得如此之大，以至于最好的模型是将所有参数设置为 0。
 
 >为了防止这种情况发生，我们将平方和乘以另一个较小的数字。这个数字称为** weight decay or wd.**
@@ -367,7 +367,8 @@ A solution to this problem is to **slowly decrease the learning rate value** in 
 >![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/learningrate.png) 
 >Too much cause overfit , too small not work well.
 
-#Learning rate schedules
+
+
 >**Learning rate schedules**是一个预定义的框架，它随着训练的进行调整时期或迭代之间的学习率。学习率调度的两种最常见的技术是，
 >onstant learning rate: 
 as the name suggests, we initialize a learning rate and don’t change it during training; 
