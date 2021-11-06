@@ -20,7 +20,6 @@ condition
     6.optimizer = torch.optim.Adam
     7.weight_decay = 1e-6
     8.torch.optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.9)
-    9.
 ```sh
 class MLP(nn.Module):
     def __init__(self, num_features):
@@ -56,7 +55,7 @@ class MLP(nn.Module):
         return x
 ```    
 
->Loss Figure
+Loss Figure
 ![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/loss_figure.png)
 
 ## License
