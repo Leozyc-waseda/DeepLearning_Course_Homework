@@ -5,7 +5,8 @@ source dataset: https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009
 
 Tips:
 >1.It's probably a bad idea to **apply batch norm on the last layer.**
->2.you should **not apply** **dropout to output layer. **
+>
+>2.you should **not apply dropout to output layer.**
 
 condition
 - only use MLP model
