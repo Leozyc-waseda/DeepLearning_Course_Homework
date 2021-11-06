@@ -356,9 +356,60 @@ A solution to this problem is to **slowly decrease the learning rate value** in 
 
 >Generally a wd = 0.1 works pretty well. However, the folks at fastai have been a little conservative in this respect. Hence the default value of weight decay in fastai is actually **0.01** .
 
+>or try 5 values: 0.001, 0.01, 0.1, 1, and 10.
+
 >Reference: https://towardsdatascience.com/this-thing-called-weight-decay-a7cd4bcfccab
 
 ## 8.torch.optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.9)
+
+>Why learning rate is so important 
+>![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/learningrate.png) 
+>Too much cause overfit , too small not work well.
+
+#Learning rate schedules
+>**Learning rate schedules**是一个预定义的框架，它随着训练的进行调整时期或迭代之间的学习率。学习率调度的两种最常见的技术是，
+>onstant learning rate: 
+as the name suggests, we initialize a learning rate and don’t change it during training; 
+
+>Learning rate decay: we select an initial learning rate, then gradually reduce it in accordance with a scheduler. 我们选择一个初始学习率，然后根据调度程序逐渐降低它。
+
+>这很好。在训练的早期，学习率设置得很大，以达到一组足够好的权重。随着时间的推移，这些权重被微调以通过利用小的学习率来达到更高的准确度。
+
+>example code
+
+```python
+# 損失関数の定義
+loss_fn = nn.MSELoss()
+
+# オプティマイザの定義
+# 精度向上ポイント: 学習率の選択、オプティマイザの選択
+# 精度向上ポイント（発展）: weight decayの大小、スケジューラの使用
+LEARNING_RATE = 0.001
+optimizer = torch.optim.Adam(mlp.parameters(), lr=LEARNING_RATE,weight_decay=0.1)
+scheduler = torch.optim.lr_scheduler.StepLR(optimizer,step_size=50,gamma=0.7)
+
+# 学習の実行
+# 精度向上ポイント: エポック数の大小
+NUM_EPOCHS = 500
+loss_stats = {'train': [], 'valid': []}
+for e in range(1, NUM_EPOCHS+1):
+
+    # 訓練
+    train_epoch_loss = 0
+    mlp.train()
+    for x, t in train_loader:
+        x, t = x.to(DEVICE), t.unsqueeze(1).to(DEVICE)
+        optimizer.zero_grad()  # 勾配の初期化
+        pred = mlp(x)  # 予測の計算(順伝播)
+        loss = loss_fn(pred, t)  # 損失関数の計算
+        loss.backward()  # 勾配の計算（逆伝播）
+        optimizer.step()  # 重みの更新
+        train_epoch_loss += loss.item()
+    scheduler.step()
+```
+
+>Reference: https://neptune.ai/blog/how-to-choose-a-learning-rate-scheduler
+
 
 ## License
 
