@@ -173,9 +173,15 @@ Softmax 函数的分母结合了原始输出值的所有因子，这意味着 So
 
 >10.softplus 激活函数
 ![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/softplus.png)  
-
-
 >Reference：https://finance.sina.com.cn/tech/2021-02-24/doc-ikftssap8455930.shtml
+
+## So how to choose an Hidden layer activation funciton!!
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/hid_acti.png)  
+
+## So how to choose an output layer activation funciton!!
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/out_acti.png)  
+
+
 ## 3.Dropout rate = 0.5
 ## 4.using batchnormalization
 ## 5.learning rate = 0.001
