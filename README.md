@@ -60,7 +60,7 @@ class MLP(nn.Module):
 ```    
 
 Loss Figure
-![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/loss_figure.png)
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/loss_figure.png)
 
 
 ## For memo
@@ -71,12 +71,12 @@ Loss Figure
 >e.g.举个栗子，MNIST分类。
 输出图片经过隐藏层加工, 变成另一种特征代表 (3个神经元输出3个特征), 将这3个特征可视化出来。就有了下面这张图, 我们发现中间的隐藏层对于"1"的图片数据有了清晰的认识，能将"1"的特征区分开来。
 
-![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/minist.png)
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/minist.png)
 
 >多个隐藏层的意义
 多个隐藏层其实是对输入特征多层次的抽象，#最终的目的就是为了更好的线性划分不同类型的数据（隐藏层的作用）#。
 怎么理解这句话呢，举个有趣的例子，如下图所示。
-![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/multi_layer.png)
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/multi_layer.png)
 我们的输入特征是:身高、体重、胸围、腿长、脸长等等一些外貌特征，输出是三个类:帅气如彭于晏，帅气如我，路人。
 那么隐藏层H1中，身高体重腿长这些特征，在H1中表达的特征就是身材匀称程度，胸围，腰围，臀围这些可能表达的特征是身材如何，脸长和其他的一些长表达的特征就是五官协调程度。
 那么把这些特征，再输入到H2中，H2中的神经元可能就是在划分帅气程度，身材好坏了，然后根据这些结果，分出了三个类。
