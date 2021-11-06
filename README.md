@@ -9,7 +9,7 @@ Tips:
 
 condition
 - only use MLP model
-```sh
+```python
         self.layer_1 = nn.Linear(num_features, 16)  
         self.layer_2 = nn.Linear(16, 32)  
         self.layer_3 = nn.Linear(32, 16)  
@@ -24,7 +24,7 @@ condition
     6.optimizer = torch.optim.Adam
     7.weight_decay = 1e-6
     8.torch.optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.9)
-```py
+```python
 class MLP(nn.Module):
     def __init__(self, num_features):
         super().__init__()
@@ -58,7 +58,7 @@ class MLP(nn.Module):
         
         return x
 ```    
-```py
+```python
     def forward(self, inputs):
         x = self.layer_1(inputs)
         x = self.batchnorm1(x)
