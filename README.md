@@ -24,7 +24,7 @@ condition
     6.optimizer = torch.optim.Adam
     7.weight_decay = 1e-6
     8.torch.optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.9)
-```sh
+```py
 class MLP(nn.Module):
     def __init__(self, num_features):
         super().__init__()
@@ -53,12 +53,31 @@ class MLP(nn.Module):
         x = torch.sigmoid(x)
         x = self.batchnorm3(x)
         x = self.dropout(x)
-        
+
         x = self.layer_out(x)
         
         return x
 ```    
+```py
+    def forward(self, inputs):
+        x = self.layer_1(inputs)
+        x = self.batchnorm1(x)
+        x = self.dropout(x)
+        x = F.relu(x)
 
+        
+        x = self.layer_2(x)
+        x = self.batchnorm2(x)
+        x = self.dropout(x)
+        x = F.relu(x)
+            
+        x = self.layer_3(x)
+        x = self.dropout(x)
+        x = self.batchnorm3(x)
+        x = F.relu(x)
+        
+        x = self.layer_out(x)
+```    
 Loss Figure
 ![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/loss_figure.png)
 
@@ -181,10 +200,60 @@ Softmax 函数的分母结合了原始输出值的所有因子，这意味着 So
 ## So how to choose an output layer activation funciton!!
 ![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/out_acti.png)  
 
+>Reference: https://machinelearningmastery.com/choose-an-activation-function-for-deep-learning/
 
 ## 3.Dropout rate = 0.5
+>you should **not apply dropout to output layer. **
+>The default interpretation of the dropout hyperparameter is the probability of training a given node in a layer, where 1.0 means no dropout, and 0.0 means no outputs from the layer.
+
+>** A good value for dropout in a hidden layer is between 0.5 and 0.8. Input layers use a larger dropout rate, such as of 0.8.**
+
+> drop out rate too much of it will your network **under-learn** while too less will lead to **overfitting**.
+
+>Also, another strategy is putting dropouts in the initial layers (usually fully connected layers) and avoid in later layers.
+
+>There’s some debate as to whether the dropout should be placed before or after the activation function. 
+
+>As a rule of thumb, place the dropout after the activate function for all activation functions **other than relu.** In passing 0.5, every hidden unit (neuron) is set to 0 with a probability of 0.5.除了Relu激活函数之外，所有的dropout都是在activation funciton的后面，relu在前面。
+```sh
+        x = F.relu(self.dropout1(self.batchnorm1(self.layer_1(inputs))))
+        x = F.relu(self.dropout2(self.batchnorm2(self.layer_2(x))))
+        x = F.relu(self.layer_3(x))
+
+```
+>Reference: https://towardsdatascience.com/machine-learning-part-20-dropout-keras-layers-explained-8c9f6dc4c9ab
 ## 4.using batchnormalization
+>普通数据标准化
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/norm_batch.png)  
+>It's probably a bad idea to **apply batch norm on the last layer.**
+> nn.Relu(batchnormalization()) **batchnormalization在relu之前**
+
+>**让机器学习更容易学习到数据之中的规律**
+
+>每层都做标准化
+>在神经网络中, 数据分布对训练会产生影响. 比如某个神经元 x 的值为1, 某个 Weights 的初始值为 0.1, 这样后一层神经元计算结果就是 Wx = 0.1; 又或者 x = 20, 这样 Wx 的结果就为 2. 现在还不能看出什么问题, 但是, 当我们加上一层激励函数, 激活这个 Wx 值的时候, 问题就来了. 如果使用 像 tanh 的激励函数, Wx 的激活值就变成了 ~0.1 和 ~1, 接近于 1 的部已经处在了 激励函数的饱和阶段, 也就是如果 x 无论再怎么扩大, tanh 激励函数输出值也还是 接近1. 换句话说, **神经网络在初始阶段已经不对那些比较大的 x 特征范围敏感了.** 这样很糟糕, 想象我轻轻拍自己的感觉和重重打自己的感觉居然没什么差别, 这就证明我的感官系统失效了. 当然我们是可以用之前提到的对数据做 normalization 预处理, 使得输入的 x 变化范围不会太大, 让输入值经过激励函数的敏感部分. 但刚刚这个不敏感问题不仅仅发生在神经网络的输入层, 而且在隐藏层中也经常会发生.
+
+>![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/norm_batch_result.png)  
+
+>Reference: https://zhuanlan.zhihu.com/p/24810318
+
 ## 5.learning rate = 0.001
+>The learning rate may, in fact, be the **most important hyperparameter** to configure for your model.
+>那一般Learning Rate的取值都在0.0001到0.01之间，这个效果就像你走路的步子，步子迈达了，很容易错过最佳点，而迈小了又需要花更长的时间才能到最佳点。
+先走快一些（大一些的Learning Rate），然后要到最佳点的时候，再降低Learning Rate来到达最佳点。
+
+>not smart way 
+>We might start with a large value like 0.1, then try exponentially lower values: 0.01, 0.001, etc.
+
+>a smarter way
+>Leslie N. Smith describes a powerful technique to select a range of learning rates for a neural network in section 3.3 of the 2015 paper “Cyclical Learning Rates for Training Neural Networks” .https://arxiv.org/abs/1506.01186
+>![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/smartway.png)  
+
+>another way
+>![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/anotherway.png)  
+
+
+>Reference: https://towardsdatascience.com/estimating-optimal-learning-rate-for-a-deep-neural-network-ce32f2556ce0
 ## 6.optimizer = torch.optim.Adam
 ## 7.weight_decay = 1e-6
 ## 8.torch.optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.9)
