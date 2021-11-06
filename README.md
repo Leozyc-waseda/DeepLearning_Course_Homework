@@ -323,7 +323,41 @@ A solution to this problem is to **slowly decrease the learning rate value** in 
 
 
 >Reference: https://towardsdatascience.com/7-tips-to-choose-the-best-optimizer-47bb9c1219e
+
 ## 7.weight_decay = 1e-6
+
+>In my previous article, I mentioned that **data augmentation** helps deep learning models generalize well. 
+>That was on the data side of things. 
+>What about the model side of things? What can we do while training our models, that will **help them generalize** even better.
+
+>首先，现实世界的数据不会像上面显示的那样简单。现实世界的数据很复杂，为了解决复杂的问题，我们需要复杂的解决方案。
+>减少参数只是防止我们的模型变得过于复杂的一种方法。但这实际上是一个非常有限的策略。更多的参数意味着我们神经网络的各个部分之间有更多的交互。更多的交互意味着更多的非线性。这些非线性有助于我们解决复杂的问题。
+**These non-linearities help us solve complex problems.!!**
+>因此，如果我们惩罚复杂性会怎样。我们仍然会使用很多参数，但我们会防止我们的模型变得过于复杂。体重衰减**(weight decay)**的想法就是这样产生的。
+
+#So, How Weight decay works.
+>惩罚复杂性的一种方法是将我们所有的参数（权重）添加到我们的损失函数中。嗯，这不会奏效，因为有些参数是正的，有些是负的。那么如果我们将所有参数的平方加到我们的损失函数中会怎样。我们可以这样做，但是它可能会导致我们的损失变得如此之大，以至于最好的模型是将所有参数设置为 0。
+
+>为了防止这种情况发生，我们将平方和乘以另一个较小的数字。这个数字称为** weight decay or wd.**
+
+>Our loss function now looks as follows:
+>loss  = ground truth data - predicted data 
+- Loss = MSE(y_hat, y) + wd * sum(w^2)
+
+>当我们使用梯度下降更新权重时，我们执行以下操作:
+- w(t) = w(t-1) - lr * dLoss / dw
+
+>现在因为我们的损失函数有 2 项，所以第二项 w.r.t **w** 的导数将是：
+- d(wd * w^2) / dw = 2 * wd * w (similar to d(x^2)/dx = 2x)
+
+>也就是说，从现在开始，我们不仅要从权重中减去**Learning rate * gradient**，还要减去 **2 * wd * w** 。我们正在从原始重量中减去一个常数倍的重量。这就是为什么它被称为weight decay。 
+
+#Deciding the value of wd
+
+>Generally a wd = 0.1 works pretty well. However, the folks at fastai have been a little conservative in this respect. Hence the default value of weight decay in fastai is actually **0.01** .
+
+>Reference: https://towardsdatascience.com/this-thing-called-weight-decay-a7cd4bcfccab
+
 ## 8.torch.optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.9)
 
 ## License
