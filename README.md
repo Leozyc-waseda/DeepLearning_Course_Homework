@@ -254,7 +254,75 @@ Softmax 函数的分母结合了原始输出值的所有因子，这意味着 So
 
 
 >Reference: https://towardsdatascience.com/estimating-optimal-learning-rate-for-a-deep-neural-network-ce32f2556ce0
+
 ## 6.optimizer = torch.optim.Adam
+>Optimizers in machine learning are used to tune the parameters of a neural network in order to **minimize the cost function.**
+
+>**Gradient Descent optimizers**
+    1.Batch gradient descent
+    2.Stochastic gradient descent
+    3.Mini-batch gradient descent
+
+>**adaptive optimizers**
+    1.Adagrad
+    2.Adadelta
+    3.RMSprop
+    4.Adam
+# Gradient descent optimizers
+>![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/bgd.png) 
+
+>![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/sgd.png) 
+>The problem of SGD is that the updates are frequent and with a high variance, so the objective function heavily fluctuates during training.
+This fluctuation can be an **advantage with respect to batch gradient descent because it allows the function to jump to better local minima**, but at the same time it can represent a **disadvantage with respect to the convergence in a specific local minima.**
+A solution to this problem is to **slowly decrease the learning rate value** in order to make the updates smaller and smaller, so avoiding high oscillations.
+
+>![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/minibgd.png) 
+
+>Takeaways #1
+- **Mini batch gradient descent is the best choice** among the three in most of the cases.
+- Learning rate tuning problem: all of them are subjected to the choice of a good learning rate. Unfortunately, this choice is not straighforward.
+- **Not good for sparse data:** there is no mechanism to put in evidence rarely occurring features. All parameters are updated equally.
+- **High possibility of getting stuck into a suboptimal local minima.**
+
+# Adaptive optimizers
+>Their most important feature is that they **don’t require a tuning of the learning rate value.** Actually some libraries — i.e. Keras — still let you the possibility to manually tune it for more advanced trials.
+
+> # Adagrad
+>它使学习率适应对频繁出现的特征执行小更新和对最稀有特征执行大更新的参数。
+
+>>Adagrad 的问题在于它根据所有过去的梯度调整每个参数的学习率。因此，在经过大量步骤后（由于所有过去梯度的累积）获得非常小的学习率的可能性是相关的。
+
+>如果学习率太小，我们根本无法更新权重，结果是网络不再学习。
+
+> # Adadelta
+>它使学习率适应对频繁出现的特征执行小更新和对最稀有特征执行大更新的参数。
+
+> # Adagrad 
+
+>它通过引入一个历史窗口来改进以前的算法，该窗口设置了固定数量的过去梯度以在训练期间考虑。
+
+>这样，我们就不存在学习率消失的问题了。
+
+> # RMSprop 
+
+>它与 Adadelta 非常相似。唯一的区别在于他们管理过去梯度的方式。
+
+> # Adam 
+
+>它增加了 Adadelta 和 RMSprop的优势，即存储过去梯度的指数衰减平均值，类似于动量。
+
+# Takeaways #2
+- Adam is the best among the adaptive optimizers in most of the cases.
+- Good with sparse data: the adaptive learning rate is perfect for this type of datasets.适用于稀疏数据：自适应学习率非常适合此类数据集。
+- There is no need to focus on the learning rate value
+
+# Adam is the **best choice** in general.
+>1.无论如何首先尝试 Adam，因为它更有可能在没有高级微调的情况下返回良好的结果。 
+
+>2.然后，如果 Adam 取得了不错的结果，那么打开 SGD 看看会发生什么可能是个好主意。
+
+
+>Reference: https://towardsdatascience.com/7-tips-to-choose-the-best-optimizer-47bb9c1219e
 ## 7.weight_decay = 1e-6
 ## 8.torch.optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.9)
 
