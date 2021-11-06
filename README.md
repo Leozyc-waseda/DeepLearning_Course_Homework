@@ -3,6 +3,10 @@ This is homework from course.
 
 source dataset: https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009
 
+Tips:
+>1.It's probably a bad idea to **apply batch norm on the last layer.**
+>2.you should **not apply** **dropout to output layer. **
+
 condition
 - only use MLP model
 ```sh
@@ -95,7 +99,83 @@ Loss Figure
 
 ## 2.activation function =relu,relu, sigmoid
 
+>我们知道，我们需要算出输出误差error (output Y - target Y) 来更新权值
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/update_error.png)
+
+>激活函数
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/activation_functiona.png)
+>你看sigmoid 只会输出正数，以及靠近0的输出变化率最大，tanh和sigmoid不同的是，tanh输出可以是负数，ReLu是输入只能大于0,如果你输入含有负数，ReLu就不适合，如果你的输入是图片格式，ReLu就挺常用的。
 >Reference：https://zhuanlan.zhihu.com/p/32824193
+
+
+>Deep Learning中最常用十个激活函数
+>1.Sigmoid 激活函数
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/sigmoid.png)    
+>在什么情况下适合使用Sigmoid 激活函数呢？
+Sigmoid 函数的输出范围是 0 到 1。由于输出值限定在 0 到1，因此它对每个神经元的输出进行了归一化；
+用于将预测概率作为输出的模型。由于概率的取值范围是 0 到 1，因此 Sigmoid 函数非常合适；
+
+>Sigmoid 激活函数有哪些缺点？
+倾向于梯度消失；
+函数输出不是以 0 为中心的，这会降低权重更新的效率；
+Sigmoid 函数执行指数运算，计算机运行得较慢。
+
+>2.tanh 激活函数
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/tanh.png)    
+>首先，当输入较大或较小时，输出几乎是平滑的并且梯度较小，**这不利于权重更新。**
+>二者的区别在于输出间隔，tanh 的输出间隔为 1，并且整个函数以 0 为中心，比 sigmoid 函数更好；
+在 tanh 图中，负输入将被强映射为负，而零输入被映射为接近零。
+>注意：在一般的二元分类问题中，tanh 函数用于隐藏层，而 sigmoid函数用于输出层，但这并不是固定的，需要根据特定问题进行调整。
+
+
+>3.Relu 激活函数
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/Relu.png)    
+
+>ReLU 函数是深度学习中较为流行的一种激活函数，相比于 sigmoid 函数和 tanh 函数，它具有如下**优点**：
+当输入为正时，不存在梯度饱和问题。
+计算速度快得多。ReLU 函数中只存在线性关系，因此它的计算速度比 sigmoid 和 tanh 更快。
+
+>当然，它也有**缺点**：
+Dead ReLU 问题。当输入为负时，ReLU 完全失效，在正向传播过程中，这不是问题。有些区域很敏感，有些则不敏感。但是在反向传播过程中，如果输入负数，则梯度将完全为零，sigmoid 函数和 tanh 函数也具有相同的问题；
+我们发现 ReLU 函数的输出为 0 或正数，这意味着 ReLU 函数不是以 0 为中心的函数。
+
+>4.Leaky Relu 激活函数
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/LeakyRelu.png)    
+>Leaky ReLU 通过把 x的非常小的线性分量给予负输入（0.01x）来调整负值的零梯度（zero gradients）问题；
+leak 有助于扩大 ReLU 函数的范围，通常 a 的值为 0.01 左右；
+Leaky ReLU 的函数范围是（负无穷到正无穷）。
+注意：从理论上讲，Leaky ReLU 具有 ReLU 的所有优点，而且 Dead ReLU 不会有任何问题，**但在实际操作中，尚未完全证明 Leaky ReLU 总是比 ReLU 更好**。
+
+>5.ELU 激活函数
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/ELU.png)  
+
+>6.PReLU（Parametric ReLU） 激活函数
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/PReLU.png)  
+>PReLU 的优点如下：
+在负值域，PReLU 的斜率较小，这也可以避免 Dead ReLU 问题。
+与 ELU 相比，PReLU 在负值域是线性运算。尽管斜率很小，但不会趋于 0。
+
+>7.softmax 激活函数
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/softmax.png)  
+>Softmax 与正常的 max 函数不同：max 函数仅输出最大值，但 Softmax 确保较小的值具有较小的概率，并且不会直接丢弃。我们可以认为它是 argmax 函数的概率版本或「soft」版本。
+Softmax 函数的分母结合了原始输出值的所有因子，这意味着 Softmax 函数获得的各种概率彼此相关。
+
+>Softmax 激活函数的主要缺点是：
+在零点不可微；
+负输入的梯度为零，这意味着对于该区域的激活，权重不会在反向传播期间更新，因此会产生永不激活的死亡神经元。
+
+>8.swish 激活函数
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/swish.png)  
+
+>9.maxout 激活函数
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/maxout.png)  
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/maxout1.png)  
+
+>10.softplus 激活函数
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/softplus.png)  
+
+
+>Reference：https://finance.sina.com.cn/tech/2021-02-24/doc-ikftssap8455930.shtml
 ## 3.Dropout rate = 0.5
 ## 4.using batchnormalization
 ## 5.learning rate = 0.001
