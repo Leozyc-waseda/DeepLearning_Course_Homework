@@ -17,14 +17,14 @@ condition
         self.layer_out = nn.Linear(16, 1)  
 ```
 - I changed  :
-    1.Middle layer number
-    2.activation function =relu,relu, sigmoid
-    3.Dropout rate = 0.5
-    4.using batchnormalization
-    5.learning rate = 0.001
-    6.optimizer = torch.optim.Adam
-    7.weight_decay = 1e-6
-    8.torch.optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.9)
+  -  1.Middle layer number
+  -  2.activation function =relu,relu, sigmoid
+  -  3.Dropout rate = 0.5
+  -  4.using batchnormalization
+  -  5.learning rate = 0.001
+  -  6.optimizer = torch.optim.Adam
+  -  7.weight_decay = 1e-6
+  -  8.torch.optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.9)
 ```python
 class MLP(nn.Module):
     def __init__(self, num_features):
