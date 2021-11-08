@@ -5,9 +5,12 @@ source dataset: https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009
 
 Tips:
 >1.It's probably a bad idea to **apply batch norm on the last layer.**
->
+
 >2.you should **not apply dropout to output layer.**
 
+>3.如果数据集特别少，第一层可以去掉batchnormalization,去掉第一层或者降低整体dropout rate.
+
+>4.earily stoping 真的很有用
 condition
 - only use MLP model
 ```python
