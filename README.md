@@ -207,7 +207,9 @@ Softmax 函数的分母结合了原始输出值的所有因子，这意味着 So
 >Reference: https://machinelearningmastery.com/choose-an-activation-function-for-deep-learning/
 
 ## 3.Dropout rate = 0.5
->you should **not apply dropout to output layer. **
+some people said : -> CONV/FC -> BatchNorm -> ReLu(or other activation) -> Dropout -> CONV/FC ->
+
+some people said : >you should **not apply dropout to output layer. **
 >The default interpretation of the dropout hyperparameter is the probability of training a given node in a layer, where 1.0 means no dropout, and 0.0 means no outputs from the layer.
 
 >** A good value for dropout in a hidden layer is between 0.5 and 0.8. Input layers use a larger dropout rate, such as of 0.8.**
