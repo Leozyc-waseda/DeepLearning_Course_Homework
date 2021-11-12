@@ -216,6 +216,29 @@ some people said : >you should **not apply dropout to output layer. **
 
 > drop out rate too much of it will your network **under-learn** while too less will lead to **overfitting**.
 
+```python
+Conv - Activation - DropOut - BatchNorm - Pool --> Test_loss: 0.04261355847120285
+
+Conv - Activation - DropOut - Pool - BatchNorm --> Test_loss: 0.050065308809280396
+
+Conv - Activation - BatchNorm - Pool - DropOut --> Test_loss: 0.04911309853196144
+
+Conv - Activation - BatchNorm - DropOut - Pool --> Test_loss: 0.06809622049331665
+
+Conv - BatchNorm - Activation - DropOut - Pool --> Test_loss: 0.038886815309524536
+
+Conv - BatchNorm - Activation - Pool - DropOut --> Test_loss: 0.04126095026731491
+
+Conv - BatchNorm - DropOut - Activation - Pool --> Test_loss: 0.05142546817660332
+
+Conv - DropOut - Activation - BatchNorm - Pool --> Test_loss: 0.04827788099646568
+
+Conv - DropOut - Activation - Pool - BatchNorm --> Test_loss: 0.04722036048769951
+
+Conv - DropOut - BatchNorm - Activation - Pool --> Test_loss: 0.03238215297460556
+```
+
+
 >Also, another strategy is putting dropouts in the initial layers (usually fully connected layers) and avoid in later layers.
 
 >There’s some debate as to whether the dropout should be placed before or after the activation function. 
