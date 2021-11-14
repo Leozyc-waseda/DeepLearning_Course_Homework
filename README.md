@@ -28,7 +28,5 @@ condition
   -  6.optimizer = torch.optim.Adam
   -  7.weight_decay = 1e-6
   -  8.torch.optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.9)
-```python
 
-
-# Homework1:Wine Quality Classification with Multilayer Perceptron(MLP)
+# Homework2: Tensorflow Flower Dataset
