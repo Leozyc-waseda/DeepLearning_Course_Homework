@@ -1,9 +1,7 @@
 # Homework1:Wine Quality Classification with Multilayer Perceptron(MLP)
-This is homework from course.
+This is homework1 from course.
 
-Readme:https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework1.md
-
-source dataset: https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009
+Homework 1 Readme:https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework1.md
 
 Tips:
 >1.It's probably a bad idea to **apply batch norm on the last layer.**
@@ -31,3 +29,6 @@ condition
   -  7.weight_decay = 1e-6
   -  8.torch.optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.9)
 ```python
+
+
+# Homework1:Wine Quality Classification with Multilayer Perceptron(MLP)
