@@ -1,6 +1,6 @@
 # Homework1:Wine Quality Classification with Multilayer Perceptron(MLP)
 This is homework1 from course.
-
+Final submit file : https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework1.ipynb
 Homework 1 Readme:https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework1.md
 
 Tips:
@@ -30,3 +30,32 @@ condition
   -  8.torch.optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.9)
 
 # Homework2: Tensorflow Flower Dataset
+Homework 2 Readme : https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework2.md
+This is homework2 from course.
+Final submit file : https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework2.ipynb
+
+source dataset: https://www.tensorflow.org/tutorials/load_data/images
+
+
+Target : Accuracy > 80%
+
+Tips:
+1.transforms.compose的Data Augmentation不一定要用
+```python
+transform_train = transforms.Compose(
+    [
+         transforms.ToPILImage(),
+         transforms.Resize((height,width)), 
+         transforms.ToTensor(),
+    ]
+)
+```
+
+
+2.height = 224，width =224
+
+3.val_ratio = 0.1
+
+4.batch_size = 64
+
+5.densenet169
