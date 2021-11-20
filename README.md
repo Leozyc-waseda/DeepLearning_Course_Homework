@@ -1,7 +1,9 @@
 # Homework1:Wine Quality Classification with Multilayer Perceptron(MLP)
-This is homework1 from course.
-Final submit file : https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework1.ipynb
-Homework 1 Readme:https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework1.md
+> This is homework1 from course.
+
+> Final submit file : https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework1.ipynb
+
+> Homework 1 Readme:https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework1.md
 
 Tips:
 >1.It's probably a bad idea to **apply batch norm on the last layer.**
@@ -33,11 +35,13 @@ condition
 
 This is homework2 from course.
 
-Homework 2 Readme : https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework2.md
+> source dataset: https://www.tensorflow.org/tutorials/load_data/images
 
-Final submit file : https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework2.ipynb
+> Homework 2 Readme : https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework2.md
 
-source dataset: https://www.tensorflow.org/tutorials/load_data/images
+> Final submit file : https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework2.ipynb
+
+
 
 
 Target : Accuracy > 80%
