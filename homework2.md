@@ -57,7 +57,7 @@ els in support vector machines or regularization networks. You can think of them
 ![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/filter.png)
 
 ## 为什么要用padding
-![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/whyipadding.png)
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/whypadding.png)
 
 ## 什么是global pooling
 ![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/global_pooling.png)
