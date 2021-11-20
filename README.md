@@ -30,8 +30,11 @@ condition
   -  8.torch.optim.lr_scheduler.StepLR(optimizer,step_size=10,gamma=0.9)
 
 # Homework2: Tensorflow Flower Dataset
-Homework 2 Readme : https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework2.md
+
 This is homework2 from course.
+
+Homework 2 Readme : https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework2.md
+
 Final submit file : https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/homework2.ipynb
 
 source dataset: https://www.tensorflow.org/tutorials/load_data/images
