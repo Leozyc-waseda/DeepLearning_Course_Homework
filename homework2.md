@@ -2,8 +2,8 @@
 This is homework2 from course.
 
 source dataset: https://www.tensorflow.org/tutorials/load_data/images
-
-
+![Image text](https://github.com/Leozyc-waseda/DeepLearning_Course_Homework/blob/main/picture/BIt.png)
+Bit model is best.
 Target : Accuracy > 80%
 
 Tips:
