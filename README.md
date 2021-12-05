@@ -66,3 +66,12 @@ transform_train = transforms.Compose(
 4.batch_size = 64
 
 5.densenet169
+
+
+# Homework3: IMDb sentiment analysi
+
+This is homework3 from course.
+
+best solve way is already in this github.check,and read it very carefully ,then can understand the whole Homework3.
+
+# https://github.com/bentrevett/pytorch-sentiment-analysis
