@@ -75,3 +75,12 @@ This is homework3 from course.
 best solve way is already in this github.check,and read it very carefully ,then can understand the whole Homework3.
 
 # https://github.com/bentrevett/pytorch-sentiment-analysis
+
+
+
+# Homework4: Machine translation English  to Japanese
+This is homework4 from course.
+
+best solve way is already in this github.check,and read it very carefully ,then can understand the whole Homework3.
+
+# https://github.com/bentrevett/pytorch-seq2seq
