@@ -84,3 +84,9 @@ This is homework4 from course.
 best solve way is already in this github.check,and read it very carefully ,then can understand the whole Homework3.
 
 # https://github.com/bentrevett/pytorch-seq2seq
+
+
+
+# Homework5: VAE Fashion MINIST
+#  https://github.com/aniket-agarwal1999/VAE-Pytorch/blob/master/Variational%20Autoencoders.ipynb
+#  https://arxiv.org/pdf/1602.02282.pdf
