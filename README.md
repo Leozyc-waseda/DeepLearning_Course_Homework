@@ -96,3 +96,5 @@ For Q-learning:https://github.com/elisiojsj/Reinforcement-Learning/blob/master/V
 
 
 For DQN :https://github.com/mshik3/MountainCar-v0/blob/master/Mountain_car_v0.ipynb
+
+For ADRQN(modification of the DQN):https://mlpeschl.com/post/tiny_adrqn/
