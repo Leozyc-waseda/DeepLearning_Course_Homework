@@ -88,5 +88,11 @@ best solve way is already in this github.check,and read it very carefully ,then 
 
 
 # Homework5: VAE Fashion MINIST
-#  https://github.com/aniket-agarwal1999/VAE-Pytorch/blob/master/Variational%20Autoencoders.ipynb
-#  https://arxiv.org/pdf/1602.02282.pdf
+  https://github.com/aniket-agarwal1999/VAE-Pytorch/blob/master/Variational%20Autoencoders.ipynb
+  https://arxiv.org/pdf/1602.02282.pdf
+
+# Homework6: Deep Q-Network（DQN） MountainCar
+For Q-learning:https://github.com/elisiojsj/Reinforcement-Learning/blob/master/Value-Based/Q-Learning-MountainCar.ipynb
+
+
+For DQN :https://github.com/mshik3/MountainCar-v0/blob/master/Mountain_car_v0.ipynb
